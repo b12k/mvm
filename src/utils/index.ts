@@ -4,3 +4,4 @@ export * from './read-local-package-json';
 export * from './do-nothing';
 export * from './types';
 export * from './log-json';
+export * from './sort-lock-keys';

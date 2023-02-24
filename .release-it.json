@@ -1,6 +1,6 @@
 {
   "git": {
-    "commitMessage": "ci: release v${version}",
+    "commitMessage": "ci: release v${version} [skip actions]",
     "pushRepo": "git@github.com:b12k/mvm.git"
   },
   "github": {
