@@ -1,16 +1,13 @@
 name: Release
 
 on:
-  workflow_dispatch:
-  pull_request:
-    types:
-      - closed
+  push:
     branches:
       - master
+  workflow_dispatch:
 
 jobs:
   release:
-    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}

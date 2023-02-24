@@ -1,18 +1,19 @@
 import glob from 'glob';
 import { join } from 'node:path';
 import {
-  ensureFileSync,
   readFileSync,
-  writeJsonSync,
   readJsonSync,
+  writeJsonSync,
+  ensureFileSync,
 } from 'fs-extra';
 
 import {
-  PackageJson,
-  getDependencyType,
-  doNothing,
   Logger,
   LockFile,
+  doNothing,
+  PackageJson,
+  sortLockKeys,
+  getDependencyType,
 } from './utils';
 
 export interface UpdateConfig {
@@ -44,28 +45,32 @@ export const update = (config: UpdateConfig) => {
 
       return {
         lockFilePath: filePath.replace('package.json', 'mvm.lock'),
-        dependency: getDependencyType(name, dependencies, devDependencies),
+        dependencyType: getDependencyType(name, dependencies, devDependencies),
       };
     })
-    .filter(({ dependency }) => dependency);
+    .filter(({ dependencyType }) => dependencyType);
 
   log({ lockFilesPaths });
 
-  lockFilesPaths.forEach(({ lockFilePath, dependency }) => {
-    if (!dependency) return;
+  lockFilesPaths.forEach(({ lockFilePath, dependencyType }) => {
+    if (!dependencyType) return;
 
     ensureFileSync(lockFilePath);
     const lockFile = JSON.parse(
       readFileSync(lockFilePath, 'utf8') || '{}',
     ) as LockFile;
-    const updatedLockFile: LockFile = {
+
+    if (lockFile.dependencies) delete lockFile.dependencies[name];
+    if (lockFile.devDependencies) delete lockFile.devDependencies[name];
+
+    const updatedLockFile = sortLockKeys({
       ...lockFile,
-      [dependency]: {
-        ...lockFile[dependency],
+      [dependencyType]: {
+        ...lockFile[dependencyType],
         [name]: version,
       },
-    };
+    });
 
-    writeJsonSync(lockFilePath, updatedLockFile);
+    writeJsonSync(lockFilePath, updatedLockFile, { spaces: 2 });
   });
 };
