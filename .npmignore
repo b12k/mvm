@@ -14,6 +14,7 @@ src
 .commitlintrc
 .editorconfig
 .lintstagedrc
+.prettierignore
 .release-it.json
 
 LICENSE
