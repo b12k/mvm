@@ -1,0 +1,4 @@
+{
+  "*": ["pnpm prettier --check"],
+  "*.ts": ["pnpm eslint"]
+}

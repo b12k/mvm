@@ -1,0 +1,15 @@
+{
+  "git": {
+    "commitMessage": "ci: release v${version}",
+    "pushRepo": "git@github.com:b12k/mvm.git"
+  },
+  "github": {
+    "release": true,
+    "releaseName": "Release ${version}"
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": "conventionalcommits"
+    }
+  }
+}

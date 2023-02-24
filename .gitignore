@@ -1,0 +1,8 @@
+.idea
+.vscode
+.husky/_/*
+
+dist
+node_modules
+
+*.log
