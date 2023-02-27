@@ -17,7 +17,7 @@ export const skip = (config: SkipConfig) => {
   const relatedTags = execSync('git tag')
     .toString()
     .split('\n')
-    .filter((tag) => tag.includes(name));
+    .filter((tag) => tag.match(new RegExp(`${name}-v\\d+.\\d+.\\d+$`)));
 
   if (relatedTags.length === 0) {
     log({ message: 'no related tags found', skip: false });
