@@ -53,7 +53,7 @@ export const skip = (config: SkipConfig) => {
   const touchedFiles = execSync(`git diff --name-only ${latestTag}..HEAD`)
     .toString()
     .split('\n')
-    .filter((file) => Boolean(file) && file.includes(workspaceName));
+    .filter((file) => Boolean(file) && file.includes(`${workspaceName}/`));
 
   if (touchedFiles.length > 0) {
     log({
