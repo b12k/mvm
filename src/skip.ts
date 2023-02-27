@@ -19,7 +19,7 @@ export const skip = (config: SkipConfig) => {
     .toString()
     .split('\n')
     .filter((tag) => tag.includes(name))
-    .map((tag) => tag.split('v')[1]);
+    .map((tag) => tag.split('-v')[1]);
 
   if (tags.length === 0) {
     log({ message: 'tags not found', skip: false });
