@@ -1,5 +1,5 @@
 import { execSync } from 'node:child_process';
-import semverSort from 'semver-sort';
+import toSemver from 'to-semver';
 
 import { Logger, doNothing } from './utils';
 
@@ -15,18 +15,31 @@ export const skip = (config: SkipConfig) => {
 
   log({ config });
 
-  const tags = execSync('git tag')
+  const relatedTags = execSync('git tag')
     .toString()
     .split('\n')
-    .filter((tag) => tag.includes(name))
-    .map((tag) => tag.split('-v')[1]);
+    .filter((tag) => tag.includes(name));
 
-  if (tags.length === 0) {
-    log({ message: 'tags not found', skip: false });
+  if (relatedTags.length === 0) {
+    log({ message: 'no related tags found', skip: false });
     return false;
   }
 
-  const latestTag = `${name}-v${semverSort.desc(tags)[0]}`;
+  const latestVersion = toSemver(relatedTags)[0];
+
+  if (!latestVersion) {
+    log({ message: 'no latest version found', skip: false });
+    return false;
+  }
+
+  log({ latestVersion });
+
+  const latestTag = relatedTags.find((tag) => tag.includes(latestVersion));
+
+  if (!latestTag) {
+    log({ message: 'no latest tag found', skip: false });
+    return false;
+  }
 
   log({ latestTag });
 
