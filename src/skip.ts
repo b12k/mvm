@@ -1,7 +1,6 @@
 import { execSync } from 'node:child_process';
-import toSemver from 'to-semver';
 
-import { Logger, doNothing } from './utils';
+import { Logger, doNothing, toSemver } from './utils';
 
 export interface SkipConfig {
   log?: Logger;

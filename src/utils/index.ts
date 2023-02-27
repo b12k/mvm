@@ -5,3 +5,4 @@ export * from './do-nothing';
 export * from './types';
 export * from './log-json';
 export * from './sort-lock-keys';
+export * from './to-semver';
