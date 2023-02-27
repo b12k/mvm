@@ -24,7 +24,9 @@ export const skip = (config: SkipConfig) => {
     return false;
   }
 
-  const latestVersion = toSemver(relatedTags)[0];
+  const latestVersion = toSemver(
+    relatedTags.map((tag) => tag.replace(name, '')),
+  )[0];
 
   if (!latestVersion) {
     log({ message: 'no latest version found', skip: false });
