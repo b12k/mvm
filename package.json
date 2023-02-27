@@ -52,6 +52,7 @@
     "@types/git-raw-commits": "2.0.1",
     "@types/glob": "8.0.1",
     "@types/node": "18.14.0",
+    "@types/semver-sort": "0.0.1",
     "@typescript-eslint/eslint-plugin": "5.53.0",
     "@typescript-eslint/parser": "5.53.0",
     "chokidar": "3.5.3",
@@ -79,6 +80,7 @@
   "dependencies": {
     "commander": "10.0.0",
     "fs-extra": "11.1.0",
-    "glob": "8.1.0"
+    "glob": "8.1.0",
+    "semver-sort": "1.0.0"
   }
 }

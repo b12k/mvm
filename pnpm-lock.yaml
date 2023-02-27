@@ -11,6 +11,7 @@ specifiers:
   '@types/git-raw-commits': 2.0.1
   '@types/glob': 8.0.1
   '@types/node': 18.14.0
+  '@types/semver-sort': 0.0.1
   '@typescript-eslint/eslint-plugin': 5.53.0
   '@typescript-eslint/parser': 5.53.0
   chokidar: 3.5.3
@@ -35,6 +36,7 @@ specifiers:
   npm-run-all: 4.1.5
   prettier: 2.8.4
   release-it: 15.6.0
+  semver-sort: 1.0.0
   shx: 0.3.4
   typescript: 4.9.5
 
@@ -42,6 +44,7 @@ dependencies:
   commander: 10.0.0
   fs-extra: 11.1.0
   glob: 8.1.0
+  semver-sort: 1.0.0
 
 devDependencies:
   '@commitlint/cli': 17.4.4_@swc+core@1.3.36
@@ -54,6 +57,7 @@ devDependencies:
   '@types/git-raw-commits': 2.0.1
   '@types/glob': 8.0.1
   '@types/node': 18.14.0
+  '@types/semver-sort': 0.0.1
   '@typescript-eslint/eslint-plugin': 5.53.0_ny4s7qc6yg74faf3d6xty2ofzy
   '@typescript-eslint/parser': 5.53.0_7kw3g6rralp5ps6mg3uyzz6azm
   chokidar: 3.5.3
@@ -805,6 +809,10 @@ packages:
     resolution: {integrity: sha512-85Y2BjiufFzaMIlvJDvTTB8Fxl2xfLo4HgmHzVBz08w4wDePCTjYw66PdrolO0kzli3yam/YCgRufyo1DdQVTA==}
     dependencies:
       '@types/node': 18.14.0
+    dev: true
+
+  /@types/semver-sort/0.0.1:
+    resolution: {integrity: sha512-abYNwum55FpJWDxcWjT1eNI3J5/KXS7cWY7KUgbr/l/vn/5vaB1ejUpipLPZba8BvdbJBAJCWIXfJYZvc4SwTA==}
     dev: true
 
   /@types/semver/7.3.13:
@@ -4928,10 +4936,23 @@ packages:
       semver: 7.3.8
     dev: true
 
+  /semver-regex/3.1.4:
+    resolution: {integrity: sha512-6IiqeZNgq01qGf0TId0t3NvKzSvUsjcpdEO3AQNeIjR6A2+ckTnQlDpl4qu1bjRv0RzN3FP9hzFmws3lKqRWkA==}
+    engines: {node: '>=8'}
+    dev: false
+
   /semver-regex/4.0.5:
     resolution: {integrity: sha512-hunMQrEy1T6Jr2uEVjrAIqjwWcQTgOAcIM52C8MY1EZSD3DDNft04XzvYKPqjED65bNVVko0YI38nYeEHCX3yw==}
     engines: {node: '>=12'}
     dev: true
+
+  /semver-sort/1.0.0:
+    resolution: {integrity: sha512-JicVlQKz/C//4BiPmbHEDou6HihXxo5xqB/8Hm9FaLJ6HHkRRvYgCECq4u/z0XF8kyJQ/KAZt++A/kYz/oOSSg==}
+    engines: {node: '>=0.10.0'}
+    dependencies:
+      semver: 5.7.1
+      semver-regex: 3.1.4
+    dev: false
 
   /semver-truncate/2.0.0:
     resolution: {integrity: sha512-Rh266MLDYNeML5h90ttdMwfXe1+Nc4LAWd9X1KdJe8pPHP4kFmvLZALtsMNHNdvTyQygbEC0D59sIz47DIaq8w==}
@@ -4943,7 +4964,6 @@ packages:
   /semver/5.7.1:
     resolution: {integrity: sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==}
     hasBin: true
-    dev: true
 
   /semver/6.3.0:
     resolution: {integrity: sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==}
