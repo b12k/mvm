@@ -82,5 +82,6 @@
     "fs-extra": "11.1.0",
     "glob": "8.1.0",
     "semver": "7.3.8"
-  }
+  },
+  "packageManager": "pnpm@10.8.0"
 }

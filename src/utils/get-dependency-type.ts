@@ -3,11 +3,14 @@ export const getDependencyType = (
   dependencies: Record<string, string> = {},
   devDependencies: Record<string, string> = {},
 ): 'dependencies' | 'devDependencies' | undefined => {
-  if (name in dependencies && dependencies[name] === '*') {
+  if (name in dependencies && dependencies[name].match(/(workspace:)?\*/)) {
     return 'dependencies';
   }
 
-  if (name in devDependencies && devDependencies[name] === '*') {
+  if (
+    name in devDependencies &&
+    devDependencies[name].match(/(workspace:)?\*/)
+  ) {
     return 'devDependencies';
   }
 

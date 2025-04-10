@@ -33,6 +33,7 @@
         "devDependencies": ["webpack/*"]
       }
     ],
+    "unicorn/prefer-regexp-test": "off",
     "unicorn/import-style": "off",
     "unicorn/prefer-module": "off",
     "unicorn/no-array-reduce": "off",
