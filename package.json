@@ -1,6 +1,6 @@
 {
   "name": "@b12k/mvm",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Monorepo versions manager",
   "publishConfig": {
     "access": "public"
